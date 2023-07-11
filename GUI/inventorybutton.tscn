@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://l2dwm6nfh5h4"]
+
+[ext_resource type="Script" path="res://Scripts/InventoryButton.gd" id="1_jirfl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yhbi"]
+size = Vector2(76, 76)
+
+[node name="InventoryButton" type="Button"]
+custom_minimum_size = Vector2(80, 80)
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.037
+anchor_right = 0.021
+anchor_bottom = 0.037
+offset_left = -35.32
+offset_top = -34.96
+offset_right = 44.68
+offset_bottom = 45.04
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_jirfl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.462
+anchor_right = 0.51
+anchor_bottom = 0.475
+offset_left = -35.0
+offset_top = -31.96
+offset_right = 91.2
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.55, 0.55)
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -26.0
+offset_right = -22.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_6yhbi")
+debug_color = Color(0.278431, 0.6, 0.54902, 0.254902)
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

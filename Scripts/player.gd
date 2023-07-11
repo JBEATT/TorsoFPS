@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 7.5
-const JUMP_SPEED = 8     #(HOW FAST YOU MOVE IN AIR)
+const JUMP_SPEED =7.8     #(HOW FAST YOU MOVE IN AIR)
 const JUMP_VELOCITY = 3.5 #(JUMP HEIGHT ESSENTIALLY)
 const SENSITIVITY = 0.003
 
@@ -36,6 +36,15 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
+	# Handle Inventory.
+	if Input.is_action_just_pressed("inventory"):
+		$Inventory.visible = !$Inventory.visible
+		if $Inventory.visible:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
 		
 	# Handle Sprint.
 	if Input.is_action_pressed("sprint"):

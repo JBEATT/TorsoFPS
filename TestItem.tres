@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dhqijbaepi40h"]
+
+[ext_resource type="Texture2D" uid="uid://byjrfff7rykfr" path="res://Textures/psyche.png" id="1_hd733"]
+[ext_resource type="Script" path="res://Scripts/Item.gd" id="1_nylu5"]
+
+[resource]
+script = ExtResource("1_nylu5")
+ID = 0
+Name = ""
+ResourcePath = ""
+Icon = ExtResource("1_hd733")
+Quantity = 1
+StackSize = 5
+IsStackable = true

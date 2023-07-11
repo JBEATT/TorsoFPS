@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://xe1pep07m647"]
+
+[ext_resource type="Script" path="res://GUI/Inventory.gd" id="1_kqv7w"]
+[ext_resource type="PackedScene" uid="uid://l2dwm6nfh5h4" path="res://GUI/iventorybutton.tscn" id="2_64hqy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ir5vi"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kqv7w")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+offset_left = 1027.0
+offset_top = 184.0
+offset_right = 1702.0
+offset_bottom = 689.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 8
+
+[node name="AddItem" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1415.0
+offset_top = 785.0
+offset_right = 1615.0
+offset_bottom = 888.0
+text = "Add Item"
+
+[node name="RemoveItem" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1115.0
+offset_top = 785.0
+offset_right = 1315.0
+offset_bottom = 888.0
+text = "Remove Item"
+
+[node name="MouseArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+shape = SubResource("CircleShape2D_ir5vi")
+
+[node name="InventoryButton" parent="MouseArea" instance=ExtResource("2_64hqy")]
+visible = false
+
+[connection signal="button_down" from="AddItem" to="." method="_on_add_item_button_down"]
+[connection signal="button_down" from="RemoveItem" to="." method="_on_remove_item_button_down"]
+[connection signal="area_entered" from="MouseArea" to="." method="_on_mouse_area_area_entered"]
+[connection signal="area_exited" from="MouseArea" to="." method="_on_mouse_area_area_exited"]
